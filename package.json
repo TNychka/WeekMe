@@ -1,0 +1,23 @@
+{
+  "name": "weekme",
+  "version": "1.0.0",
+  "description": "Manage your week",
+  "main": "src/server/server.js",
+  "dependencies": {
+    "express": "^4.16.3",
+    "http": "^0.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TNychka/WeekMe.git"
+  },
+  "author": "Nasty Priests",
+  "bugs": {
+    "url": "https://github.com/TNychka/WeekMe/issues"
+  },
+  "homepage": "https://github.com/TNychka/WeekMe#readme"
+}
