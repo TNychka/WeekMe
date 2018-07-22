@@ -1,5 +1,16 @@
-import http from 'http';
-import express from 'express';
-
-const server = http.createServer();
+'use strict'
+const attachMiddlewares = require('./middlewares/index');
+const express = require('express');
+const http = require('http');
+const logger = require('../libs/script/logger')
 const app = express();
+const server = http.createServer();
+
+app.set('port', 8081); 
+
+attachMiddlewares(app, server);
+
+server.on('request', app);
+server.listen(app.get('port'), () => {
+    logger.info(`Express server listening on port ${app.get('port')}`);
+});
