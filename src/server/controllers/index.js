@@ -1,29 +1,28 @@
 const logger = require('../../libs/script/logger')
 const express = require('express');
+const _ = require('lodash');
 
-let attachApis = function (app, server) { 
-    app.get('/home', function (req, res) {
-        logger.info("Glomped user :3")
-        res.status(200).send('Hewwo World! ~nya :3c');
-    });
+const notFound = require('./notFound');
+const status = require('./status');
 
-    app.get('/no', function (req, res) {
-        throw new Error("BROKEN");
-    });
+const api = express();
+const router = express.Router();
 
-    app.get('/failed', function (req, res) {
-        var asdf = 0;
-        var strgin = "";
-        var te = strgin / asdf;
-        let a = te.as.sa.as;
-        res.status(600);
-    });
+let endpoints = {}
 
-    app.get('*', function(req, res, next) {
-        let err = new Error("Page Not Found");
-        err.statusCode = 404;
-        next(err);
-    });
-}
+endpoints = _.merge(status, notFound);
 
-module.exports = attachApis;
+_.forEach(endpoints, endpoint => {
+    switch (endpoint.method.toLowerCase()) {
+        case 'get':
+            router.get(endpoint.url.toString(), endpoint.call);
+        break;
+        case 'post':
+            router.post(endpoint.url.toString(), endpoint.call);
+        break;
+    }
+});
+
+api.use('/', router);
+
+module.exports = api;

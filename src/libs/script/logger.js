@@ -1,24 +1,7 @@
 const { createLogger, format, transports } = require('winston');
-const { combine, timestamp, label, printf } = format;
+const { combine, splat, simple, timestamp, json, label, printf } = format;
 
 const logger = createLogger();
-
-const cleanFormat = printf(info => {
-    let log = "";
-    if (info.timestamp) {
-        log += `${info.timestamp} `;
-    }
-    if (info.label) {
-        log += `${info.label} `;
-    }
-    if (info.level) {
-        log += `[${info.level}]: `;
-    }
-    if (info.message) {
-        log += `${info.message}`;
-    }
-    return log.trim();
-});
 
 logger.add(new transports.File({
     filename: 'error.log',
@@ -27,9 +10,10 @@ logger.add(new transports.File({
     format: combine(
         timestamp(),
         label({
-            label: 'oopsies!11! server did a boopsies :3c we r very swory and are doing workies on it ~nya :33'
+            label: 'Error Log'
         }),
-        cleanFormat,
+        splat(),
+        json(),
     ),
 }));
 
@@ -43,7 +27,8 @@ logger.add(new transports.File({
         label({
             label: 'Info Log'
         }),
-        cleanFormat,
+        splat(),
+        json(),
     ),
 }));
 
@@ -54,7 +39,8 @@ logger.add(new transports.Console({
     label({
         label: 'Console'
     }),
-    cleanFormat,
+    splat(),
+    simple(),
   ),
 }));
 
