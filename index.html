@@ -1,0 +1,94 @@
+<!-- LOGIN PAGE -->
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Login</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+		<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+	</head>
+	<body>
+		<div id="app">
+			<div class="general">
+				<div class="title">
+					{{ title }}
+				</div>
+				<div class="login-form">
+					<div class="credentials-div">
+						<input class="credentials username" placeholder="Enter Username" v-model="username"/>
+						<input class="credentials password" type="password" placeholder="Enter Password" v-model="password"/>
+					</div>
+					<div class="event-buttons">
+						<button class="btn sign-up-btn">Sign Up</button>
+						<button class="btn login-btn">Login</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			new Vue({
+				el: '#app',
+				data: {
+					title: 'WeekMe.',
+					username:'',
+					password:''
+				}
+			});
+		</script>
+
+		<style>
+			#app{
+				height:98%;
+				position:absolute;
+				vertical-align:middle;
+				width:98%;
+			}
+			.btn{
+				background-color:#309eff;
+				border:none;
+				border-radius:2px;
+				color:white;
+				font-family: 'Raleway', sans-serif;
+				padding:8px 20px;
+				width:90px;
+			}
+			.btn:hover { 
+			    background-color: #0a63b2;
+			}
+			.credentials{
+				border-left:white;
+				border-right:white;
+				border-top:white;
+				font-family: 'Raleway', sans-serif;
+				margin:2px;
+				padding: 2px;
+				width:60%;
+			}
+			.credentials-div{
+				display:inline-block;
+				width:60%;
+			}
+			.event-buttons{
+				display:inline-block;
+				float:right;
+				margin-top:5px;
+				width:80%;
+			}
+			.general{
+				position: relative;
+				top:30%;
+			}
+			.login-form{
+				font-family: 'Raleway', sans-serif;
+				margin-top:25px;
+				text-align:center;
+				vertical-align:middle;
+			}
+			.title{
+				font-family: 'Raleway', sans-serif;
+				font-size:48px;
+				text-align:center;
+			}
+		</style>
+	</body>
+</html>
