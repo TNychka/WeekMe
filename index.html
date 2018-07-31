@@ -4,10 +4,17 @@
 	<head>
 		<title>Login</title>
 		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-		<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Raleway|Fredericka+the+Great|Poiret+One" rel="stylesheet">
 	</head>
 	<body>
 		<div id="app">
+			<div class="header">
+				<a href="#default" class="logo">WeekMe.</a>
+				<div class="header-right">
+					<a class="active" href="#home">Home</a>
+					<a class="active" href="#login">Login</a>
+				</div>
+			</div>
 			<div class="general">
 				<div class="title">
 					{{ title }}
@@ -37,11 +44,16 @@
 		</script>
 
 		<style>
+
+			body{
+				margin:0;
+			}
+
 			#app{
-				height:98%;
+				height:100%;
 				position:absolute;
 				vertical-align:middle;
-				width:98%;
+				width:100%;
 			}
 			.btn{
 				background-color:#309eff;
@@ -67,6 +79,7 @@
 			.credentials-div{
 				display:inline-block;
 				width:60%;
+				margin-top:2%;
 			}
 			.event-buttons{
 				display:inline-block;
@@ -74,19 +87,63 @@
 				margin-top:5px;
 				width:80%;
 			}
+
 			.general{
 				position: relative;
-				top:30%;
+				top:20%;
 			}
+
+			.header {
+				background-color: #ffffff;
+				overflow: hidden;
+				padding: 20px 10px;
+			}
+
+			.header a {
+				border-radius: 4px;
+				float: left;
+				font-family: 'Poiret One', cursive;
+				font-size: 24px; 
+				line-height: 25px;
+				margin-right:40px;
+				padding: 10px;
+				text-align: center;
+				text-decoration: none;
+			}
+
+			.header a.logo {
+				font-size: 32px;
+				font-weight: bold;
+				margin-left:20px;
+			}
+
+			.header a:hover {
+				background-color: #ddd;
+			}
+
+			.header a.active {
+				color:#309eff;
+			}
+
+			.header-right {
+				float: right;
+			}
+
 			.login-form{
 				font-family: 'Raleway', sans-serif;
 				margin-top:25px;
 				text-align:center;
 				vertical-align:middle;
 			}
+
+			.logo {
+				color: black;
+				font-family: 'Poiret One', cursive;
+			}
+
 			.title{
-				font-family: 'Raleway', sans-serif;
-				font-size:48px;
+				font-family: 'Poiret One', cursive;
+				font-size:80px;
 				text-align:center;
 			}
 		</style>
