@@ -1,3 +1,7 @@
+/*
+* Aug 4th 2018
+* Home and status endpoints
+*/
 'use strict';
 let endpoints = {};
 
