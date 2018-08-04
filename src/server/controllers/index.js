@@ -1,4 +1,4 @@
-const logger = require('../../libs/script/logger')
+'use strict';
 const express = require('express');
 const _ = require('lodash');
 
@@ -8,7 +8,7 @@ const status = require('./status');
 const api = express();
 const router = express.Router();
 
-let endpoints = {}
+let endpoints;
 
 endpoints = _.merge(status, notFound);
 

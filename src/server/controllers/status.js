@@ -1,4 +1,5 @@
-let endpoints = {}; 
+'use strict';
+let endpoints = {};
 
 endpoints.home = {
     method: 'GET',
