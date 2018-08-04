@@ -3,16 +3,17 @@
 * Parse and add all custom endpoint objects to the express router
 */
 'use strict';
-const api = express();
 const express = require('express');
-const router = express.Router();
 const _ = require('lodash');
 
 // Custom endpoints
 const status = require('./status');
 const notFound = require('./notFound');
 
-// Attached all endpoints
+const api = express();
+const router = express.Router();
+
+// Attach all endpoints
 let endpoints = {};
 endpoints = _.merge(endpoints, status);
 endpoints = _.merge(endpoints, notFound);

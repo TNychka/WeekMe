@@ -21,5 +21,5 @@ class ServerError extends Error {
     }
 }
 
-export const DataBaseError = DataBaseError;
-export const ServerError = ServerError;
+module.exports=DataBaseError.prototype;
+module.exports=ServerError.prototype
