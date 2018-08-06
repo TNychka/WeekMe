@@ -1,35 +1,35 @@
-const { createLogger, format, transports } = require('winston');
-const { combine, splat, simple, timestamp, json, label} = format;
+const {createLogger, format, transports} = require('winston');
+const {combine, splat, simple, timestamp, json, label} = format;
 
 const logger = createLogger();
 
 logger.add(new transports.File({
-    filename: 'error.log',
-    dirname: 'logs',
-    level: 'error',
-    format: combine(
-        timestamp(),
-        label({
-            label: 'Error Log'
-        }),
-        splat(),
-        json(),
-    ),
+  filename: 'error.log',
+  dirname: 'logs',
+  level: 'error',
+  format: combine(
+    timestamp(),
+    label({
+      label: 'Error Log',
+    }),
+    splat(),
+    json()
+  ),
 }));
 
 logger.add(new transports.File({
-    filename: 'combined.log',
-    dirname: 'logs',
-    level: 'info',
-    timestamp: true,
-    format: combine(
-        timestamp(),
-        label({
-            label: 'Info Log'
-        }),
-        splat(),
-        json(),
-    ),
+  filename: 'combined.log',
+  dirname: 'logs',
+  level: 'info',
+  timestamp: true,
+  format: combine(
+    timestamp(),
+    label({
+      label: 'Info Log',
+    }),
+    splat(),
+    json()
+  ),
 }));
 
 logger.add(new transports.Console({
@@ -37,10 +37,10 @@ logger.add(new transports.Console({
   format: combine(
     timestamp(),
     label({
-        label: 'Console'
+        label: 'Console',
     }),
     splat(),
-    simple(),
+    simple()
   ),
 }));
 
@@ -59,16 +59,18 @@ let winstonLogger = {
     },
     error(...args) {
         logger.error(...args);
-    }
+    },
 };
 
-process.on('unhandledRejection', function(err) { 
-    logger.error("UNCAUGHT REJECTION, Inside 'unhandledRejection' event: " + err.message );
-    logger.error(err.stack);
+process.on('unhandledRejection', function(err) {
+  logger.error('UNCAUGHT REJECTION, Inside \'unhandledRejection\' event: '
+    + err.message );
+  logger.error(err.stack);
 });
 
-process.on('unhandledException', function(err) { 
-    logger.error("UNCAUGHT EXCEPTION, Inside 'uncaughtException' event: " + err.message );
+process.on('unhandledException', function(err) {
+    logger.error('UNCAUGHT EXCEPTION, Inside \'uncaughtException\' event: '
+      + err.message );
     logger.error(err.stack);
 });
 

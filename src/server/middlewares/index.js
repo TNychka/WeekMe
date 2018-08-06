@@ -2,7 +2,6 @@
 * Aug 4th 2018
 * All middlewares and endpoints are attached here
 */
-
 'use strict';
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
@@ -11,10 +10,9 @@ const morgan = require('morgan');
 const controllers = require('../controllers/index');
 const attachCustomMethods = require('./attachCustomMethods');
 const errorHandler = require('./errorHandler');
-const logger = require('../../libs/script/logger');
 
-module.exports = function attachMiddlewares (app, server) {
-    app.use(bodyParser.urlencoded({ extended: false }));
+module.exports = function attachMiddleware(app, server) {
+    app.use(bodyParser.urlencoded({extended: false}));
     app.use(bodyParser.json());
     app.use(attachCustomMethods);
     app.use(methodOverride());
