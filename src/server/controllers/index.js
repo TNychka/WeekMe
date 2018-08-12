@@ -1,17 +1,23 @@
-const logger = require('../../libs/script/logger')
+/*
+* Aug 4th 2018
+* Parse and add all custom endpoint objects to the express router
+*/
+'use strict';
+const api = express();
 const express = require('express');
+const router = express.Router();
 const _ = require('lodash');
 
-const notFound = require('./notFound');
+// Custom endpoints
 const status = require('./status');
+const notFound = require('./notFound');
 
-const api = express();
-const router = express.Router();
+// Attached all endpoints
+let endpoints = {};
+endpoints = _.merge(endpoints, status);
+endpoints = _.merge(endpoints, notFound);
 
-let endpoints = {}
-
-endpoints = _.merge(status, notFound);
-
+// Add all endpoints to router
 _.forEach(endpoints, endpoint => {
     switch (endpoint.method.toLowerCase()) {
         case 'get':

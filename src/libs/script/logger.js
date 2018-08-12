@@ -1,5 +1,5 @@
 const { createLogger, format, transports } = require('winston');
-const { combine, splat, simple, timestamp, json, label, printf } = format;
+const { combine, splat, simple, timestamp, json, label} = format;
 
 const logger = createLogger();
 
@@ -60,7 +60,7 @@ let winstonLogger = {
     error(...args) {
         logger.error(...args);
     }
-}
+};
 
 process.on('unhandledRejection', function(err) { 
     logger.error("UNCAUGHT REJECTION, Inside 'unhandledRejection' event: " + err.message );

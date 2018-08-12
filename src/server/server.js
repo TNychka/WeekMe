@@ -1,8 +1,9 @@
-'use strict'
+'use strict';
 const attachMiddlewares = require('./middlewares/index');
 const express = require('express');
 const http = require('http');
-const logger = require('../libs/script/logger')
+const logger = require('../libs/script/logger');
+
 const app = express();
 const server = http.createServer();
 
